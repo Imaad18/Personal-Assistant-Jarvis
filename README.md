@@ -40,19 +40,33 @@ wishMe()
 Greets the user based on the time of the day:
 
 Morning: Before 12 PM.
+
 Afternoon: Between 12 PM and 6 PM.
-Evening: After 6 PM.
+
+Evening: After 6 PM to 11:59 PM
+
 Introduces itself as "Jarvis" and asks how it can assist.
+
 takeCommand()
+
 Listens to the user's voice input via the microphone.
+
 Converts the audio into text using Google's speech recognition API.
+
 Returns the recognized text or "None" if recognition fails.
+
 get_weather(city)
+
 Uses the OpenWeatherMap API to fetch current weather information for a given city.
+
 Extracts and announces:
+
 Temperature
+
 Weather description
+
 Humidity
+
 In case of errors (e.g., invalid city), apologizes to the user.
 
 **4. Data Collections**
