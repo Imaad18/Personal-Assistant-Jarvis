@@ -23,7 +23,7 @@ def wishMe():
         speak("Good Afternoon!")
     else:
         speak("Good Evening!")
-    speak("Hello Adnan Bukhari , I am Jarvis, your personal assistant. Please tell me how may I help you.")
+    speak("Hello Imaad Mahmood , I am Jarvis, your personal assistant. Please tell me how may I help you.")
 
 def takeCommand():
     r = sr.Recognizer()
