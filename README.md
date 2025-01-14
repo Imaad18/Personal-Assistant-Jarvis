@@ -36,7 +36,7 @@ A personal assistant that does your job with a single voice command with salient
  speak(audio)
  Converts text (audio) into speech and plays it aloud.
 
-wishMe()
+**wishMe()**
 Greets the user based on the time of the day:
 
 Morning: Before 12 PM.
@@ -47,15 +47,29 @@ Evening: After 6 PM to 11:59 PM
 
 Introduces itself as "Jarvis" and asks how it can assist.
 
-takeCommand()
+**takeCommand()**
 
 Listens to the user's voice input via the microphone.
+
+**sr.Recognizer()** and **sr.Microphone()**: These are part of the SpeechRecognition library, which enables speech-to-text functionality.
+
+r.pause_threshold = 1
+
+r.energy_threshold = 3000
+
+**Energy Threshold:** Defines the minimum audio energy required for the system to recognize speech.
+
+3000: Adjusted to filter out background noise.
+
+**Pause Threshold:** Specifies the duration (in seconds) of silence required before the system considers the input complete.
+
+1: Allows a 1-second pause in the speech before ending the audio capture.
 
 Converts the audio into text using Google's speech recognition API.
 
 Returns the recognized text or "None" if recognition fails.
 
-get_weather(city)
+**get_weather(city)**
 
 Uses the OpenWeatherMap API to fetch current weather information for a given city.
 
