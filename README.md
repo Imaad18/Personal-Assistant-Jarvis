@@ -65,6 +65,14 @@ r.energy_threshold = 3000
 
 1: Allows a 1-second pause in the speech before ending the audio capture.
 
+**query** = r.recognize_google(audio, language='en-in')
+
+**audio:** The audio input captured previously using the takeCommand() function.
+
+**language='en-in':** Specifies the language/accent for recognition. In this case:
+
+'en-in': English (India).
+
 Converts the audio into text using Google's speech recognition API.
 
 Returns the recognized text or "None" if recognition fails.
