@@ -19,6 +19,8 @@ A personal assistant that does your job with a single voice command with salient
  
  requests: Handles HTTP requests (used for weather API calls).
 
+
+
 **2. Initialization**
  The text-to-speech engine (pyttsx3) is initialized with a voice property.
  
@@ -31,6 +33,8 @@ A personal assistant that does your job with a single voice command with salient
  It Retrieves a list of available voices from the engine.
  
  voice[0] is male voice while voice[1] is females voice
+
+
 
 **3. Functions**
  speak(audio)
@@ -81,7 +85,16 @@ Returns the recognized text or "None" if recognition fails.
 
 Uses the OpenWeatherMap API to fetch current weather information for a given city.
 
-Extracts and announces:
+API Request:
+
+**response = requests.get(complete_url)**
+
+**data = response.json()**
+
+requests.get(complete_url): Sends an HTTP GET request to the API.
+
+response.json(): Converts the response into a JSON object for easier data access.
+
 
 Temperature
 
@@ -91,11 +104,15 @@ Humidity
 
 In case of errors (e.g., invalid city), apologizes to the user.
 
+
+
 **4. Data Collections**
 Lists
 facts: Stores random interesting facts.
 quotes: Stores motivational quotes.
 websites: Stores URLs of popular websites.
+
+
 
 **5. Main Program Logic**
 Greeting
@@ -122,12 +139,18 @@ e. Stop
 Ends the loop and says goodbye.
 **
 
+
+
 **6. API Key**
 The weather function uses a placeholder API key (47f5042f9812fe43a495b8daaf14ab5e). Replace this with your own valid OpenWeatherMap API key for real-world use.
+
+
 
 **7. Error Handling**
 Gracefully handles speech recognition errors by asking the user to repeat themselves.
 Provides fallback mechanisms (e.g., for WhatsApp and weather data retrieval).
+
+
 
 **8. Example Commands**
 Here are sample commands and their corresponding actions:
