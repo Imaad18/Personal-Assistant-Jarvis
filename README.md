@@ -21,10 +21,15 @@ A personal assistant that does your job with a single voice command with salient
 
 **2. Initialization**
  The text-to-speech engine (pyttsx3) is initialized with a voice property.
+ 
  voices[0] is selected as the default voice. You can adjust this index to change the voice.
+ 
  sapi5 = speech application programming interference 5 is an api provided by microsoft sppech synthesis engine
+ 
  voices = engine.getProperty('voices')
+ 
  It Retrieves a list of available voices from the engine.
+ 
  voice[0] is male voice while voice[1] is females voice
 
 **3. Functions**
