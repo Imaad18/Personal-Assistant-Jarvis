@@ -4,12 +4,19 @@ A personal assistant that does your job with a single voice command with salient
 
 ****1. Modules and Libraries****
  Imported Modules
+ 
  pyttsx3: Used for text-to-speech functionality.
+ 
  speech_recognition: Enables speech recognition to convert spoken words into text.
+ 
  datetime: Helps fetch the current date and time.
+ 
  webbrowser: Opens web pages in the default browser.
+ 
  os: Provides OS-level functionalities (e.g., file and application handling).
+ 
  random: Generates random choices (used for facts, quotes, and websites).
+ 
  requests: Handles HTTP requests (used for weather API calls).
 
 **2. Initialization**
