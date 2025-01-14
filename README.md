@@ -93,3 +93,8 @@ Here are sample commands and their corresponding actions:
 "Display time": Announces the current time.
 "Stop": Exits the program.
 This script demonstrates modular design, voice interaction, and real-time API integration to deliver a user-friendly virtual assistant experience.
+
+
+
+
+Note: you can also add more features like calculator, notepad, task and reminder and many other features.
