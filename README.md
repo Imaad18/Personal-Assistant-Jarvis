@@ -120,22 +120,44 @@ The program begins by calling wishMe() to greet the user.
 
 **Command Loop**
 The program continuously listens for commands in a loop. Based on the user's input (query), it performs specific tasks:
+
 a. Opening Applications and Websites
-YouTube, Chrome, Facebook, Twitter: Opens respective URLs.
-WhatsApp: Attempts to open the desktop app (if installed); falls back to WhatsApp Web.
-b. Entertainment
-Play Music: Plays the first song from a predefined directory.
-Tell a Joke: Provides a humorous statement.
-Tell a Quote: Recites a motivational quote.
-Tell a Fact: Shares a random fact.
-c. Utility Tasks
-Display Time/Date: Speaks the current time or date.
-Search on Google: Performs a Google search for user-provided input.
-Open Random Website: Opens a randomly selected website from the list.
-Set an Alarm: Accepts an alarm time and confirms the setup (basic logic; actual functionality not implemented).
-d. Weather Updates
+
+**YouTube, 
+Chrome, 
+Facebook,
+Twitter:**
+Opens respective URLs.
+
+**WhatsApp:**
+Attempts to open the desktop app (if installed); falls back to WhatsApp Web.
+
+**b. Entertainment**
+
+**Play Music:** Plays the first song from a predefined directory.
+
+**Tell a Joke:** Provides a humorous statement.
+
+**Tell a Quote:** Recites a motivational quote.
+
+**Tell a Fact:** Shares a random fact.
+
+**c. Utility Tasks**
+
+**Display Time/Date:** Speaks the current time or date.
+
+**Search on Google:** Performs a Google search for user-provided input.
+
+**Open Random Website:** Opens a randomly selected website from the list.
+
+**Set an Alarm:** Accepts an alarm time and confirms the setup (basic logic; actual functionality not implemented).
+
+**d. Weather Updates**
+
 Asks for a city name, fetches the weather data using the get_weather function, and announces the results.
-e. Stop
+
+**e. Stop**
+
 Ends the loop and says goodbye.
 **
 
@@ -146,8 +168,9 @@ The weather function uses a placeholder API key (47f5042f9812fe43a495b8daaf14ab5
 
 
 
-**7. Error Handling**
+**7. Error Handling**'
 Gracefully handles speech recognition errors by asking the user to repeat themselves.
+
 Provides fallback mechanisms (e.g., for WhatsApp and weather data retrieval).
 
 
@@ -155,14 +178,19 @@ Provides fallback mechanisms (e.g., for WhatsApp and weather data retrieval).
 **8. Example Commands**
 Here are sample commands and their corresponding actions:
 
-"Open YouTube": Opens YouTube in the browser.
-"Play music": Plays the first song from the predefined directory.
-"Tell about weather": Provides weather updates for a specified city.
-"Display time": Announces the current time.
-"Stop": Exits the program.
+**"Open YouTube":** Opens YouTube in the browser.
+
+**"Play music":** Plays the first song from the predefined directory.
+
+**"Tell about weather":** Provides weather updates for a specified city.
+
+**"Display time":** Announces the current time.
+
+**"Stop":** Exits the program.
+
 This script demonstrates modular design, voice interaction, and real-time API integration to deliver a user-friendly virtual assistant experience.
 
 
 
 
-Note: you can also add more features like calculator, notepad, task and reminder and many other features.
+**Note:** you can also add more features like calculator, notepad, task and reminder and many other features.
