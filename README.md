@@ -5,19 +5,19 @@ A personal assistant that does your job with a single voice command with salient
 ****1. Modules and Libraries****
  Imported Modules
  
- pyttsx3: Used for text-to-speech functionality.
+ **~pyttsx3:** Used for text-to-speech functionality.
  
- speech_recognition: Enables speech recognition to convert spoken words into text.
+ **~speech_recognition:** Enables speech recognition to convert spoken words into text.
  
- datetime: Helps fetch the current date and time.
+ **~datetime:** Helps fetch the current date and time.
  
- webbrowser: Opens web pages in the default browser.
+ **~webbrowser:** Opens web pages in the default browser.
  
- os: Provides OS-level functionalities (e.g., file and application handling).
+ **~os:** Provides OS-level functionalities (e.g., file and application handling).
  
- random: Generates random choices (used for facts, quotes, and websites).
+ **~random:** Generates random choices (used for facts, quotes, and websites).
  
- requests: Handles HTTP requests (used for weather API calls).
+ **~requests:** Handles HTTP requests (used for weather API calls).
 
 
 
@@ -121,7 +121,7 @@ The program begins by calling wishMe() to greet the user.
 **Command Loop**
 The program continuously listens for commands in a loop. Based on the user's input (query), it performs specific tasks:
 
-a. Opening Applications and Websites
+**a. Opening Applications and Websites**
 
 **YouTube, 
 Chrome, 
