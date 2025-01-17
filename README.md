@@ -19,6 +19,9 @@ A personal assistant that does your job with a single voice command with salient
  
  **~requests:** Handles HTTP requests (used for weather API calls).
 
+ **openai:** Communicates with OpenAI’s API for chatbot interactions.
+
+
 
 
 **2. Initialization**
@@ -106,12 +109,15 @@ In case of errors (e.g., invalid city), apologizes to the user.
 
 
 
-**4. Data Collections**
-Lists
-facts: Stores random interesting facts.
-quotes: Stores motivational quotes.
-websites: Stores URLs of popular websites.
+**4. Data Lists**
 
+**facts:** Contains random fun facts.
+
+**quotes:** Contains inspirational quotes.
+
+**websites:** Contains URLs of random websites for exploration.
+
+**news_websites:** Contains URLs of news websites.
 
 
 **5. Main Program Logic**
@@ -187,6 +193,27 @@ Here are sample commands and their corresponding actions:
 **"Display time":** Announces the current time.
 
 **"Stop":** Exits the program.
+
+**Set Alarms:** Captures an alarm time from the user.
+
+**News Websites:** Opens a random news website.
+
+**Games:** Plays "Rock, Paper, Scissors" with the user.
+
+**AI Chat:** Uses OpenAI's API to answer user queries.
+
+**System Commands:** Supports system operations like shutting down, restarting, or locking the computer.
+
+**Google Services:** Opens Google Drive, Translate, Calendar, and Notes.
+
+**Entertainment:** Opens websites for movies, anime, and online music streaming.
+
+**Tell Jokes/Quotes/Facts:** Shares jokes, quotes, or random facts.
+
+**Search Google:** Performs a Google search for a user query.
+
+**Random Websites:** Opens a random website from the predefined list.
+
 
 This script demonstrates modular design, voice interaction, and real-time API integration to deliver a user-friendly virtual assistant experience.
 
