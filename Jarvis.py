@@ -1,10 +1,16 @@
-import pyttsx3  # pip install pyttsx3
-import speech_recognition as sr  # pip install SpeechRecognition
+
+import pyttsx3  # text to speech
+import speech_recognition as sr  # speech to text
 import datetime
-import webbrowser
+import webbrowser   # opens websites via google
 import os
 import random
 import requests
+import psutil     # For Battery Health
+import ctypes   # Calling windows function (log off, shut down)
+import subprocess   # commands like shutdown,ping,ls
+import platform    # gets system info.
+
 
 # Initialize the text-to-speech engine
 engine = pyttsx3.init('sapi5')
@@ -42,6 +48,7 @@ def takeCommand():
         return "None"
     return query
 
+
 # Weather Update Function
 def get_weather(city="Bahawalpur"):
     api_key = "47f5042f9812fe43a495b8daaf14ab5e"  # Replace with your actual API key
@@ -60,6 +67,7 @@ def get_weather(city="Bahawalpur"):
     else:
         speak("Sorry, I couldn't fetch the weather data.")
 
+
 # List of random facts
 facts = [
     "Honey never spoils. Archaeologists have found pots of honey in ancient tombs that are over 3,000 years old and still edible.",
@@ -68,6 +76,7 @@ facts = [
     "The Eiffel Tower can grow more than 6 inches taller during the summer.",
     "Cleopatra lived closer in time to the moon landing than to the building of the Great Pyramid of Giza."
 ]
+
 
 # List of inspirational quotes
 quotes = [
@@ -79,23 +88,83 @@ quotes = [
 ]
 
 
-import openai  # pip install openai
+# Battery Status
 
-# Add your OpenAI API key here
-openai.api_key = "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"
+def check_battery_status():
+    battery = psutil.sensors_battery()
+    if battery:
+        percent = battery.percent
+        speak(f"The battery is at {percent}%")
+    else:
+        speak("Battery status is not available.")
 
-def chat_with_openai(prompt):
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Choose the model (gpt-4 or gpt-3.5-turbo)
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=150,  # Limit the response length
-            temperature=0.7,  # Creativity level
-        )
-        reply = response['choices'][0]['message']['content']
-        return reply
-    except Exception as e:
-        return "Sorry, I couldn't connect to the chatbot service."
+
+# Function to increase the volume
+def increase_volume():
+    volume = engine.getProperty('volume')  # Get the current volume
+    if volume < 1.0:  # Maximum volume is 1.0
+        engine.setProperty('volume', volume + 0.1)  # Increase volume by 0.1
+        speak("Volume increased.")
+    else:
+        speak("Volume is already at maximum.")
+
+# Open Control Panel
+def open_control_panel():
+    os.system("control")
+    speak("Opening Control Panel.")
+
+# Open System Settings (Windows 10/11)
+def open_system_settings():
+    os.system("start ms-settings:")
+    speak("Opening system settings.")
+
+
+# Open Network Connections
+def open_network_connections():
+    os.system("ncpa.cpl")
+    speak("Opening Network Connections.")
+
+# Open Device Manager
+def open_device_manager():
+    os.system("devmgmt.msc")
+    speak("Opening Device Manager.")
+
+# Clear system cache (Windows)
+def clear_system_cache():
+    os.system("del /q/f/s %TEMP%\*")
+    speak("System cache cleared.")
+
+# Enable or disable Wi-Fi
+def toggle_wifi(state):
+    if state == 'enable':
+        os.system("netsh interface set interface 'Wi-Fi' enabled")
+        speak("Wi-Fi is enabled.")
+    elif state == 'disable':
+        os.system("netsh interface set interface 'Wi-Fi' disabled")
+        speak("Wi-Fi is disabled.")
+
+# Open File Explorer
+def open_file_explorer():
+    os.system("explorer")
+    speak("Opening File Explorer.")
+
+# Function to decrease the volume
+def decrease_volume():
+    volume = engine.getProperty('volume')  # Get the current volume
+    if volume > 0.0:  # Minimum volume is 0.0
+        engine.setProperty('volume', volume - 0.1)  # Decrease volume by 0.1
+        speak("Volume decreased.")
+    else:
+        speak("Volume is already at minimum.")
+
+# Change system volume (mute/unmute)
+def mute_system():
+    os.system("nircmd.exe mutesysvolume 1")  # Mutes the system volume
+    speak("System volume is now muted.")
+
+def unmute_system():
+    os.system("nircmd.exe mutesysvolume 0")  # Unmutes the system volume
+    speak("System volume is now unmuted.")
 
 
 if __name__ == "__main__":
@@ -103,7 +172,43 @@ if __name__ == "__main__":
     while True:
         query = takeCommand().lower()
 
-        if 'open youtube' in query:
+        if 'increase volume' in query:
+            increase_volume()
+
+        elif 'decrease volume' in query:
+            decrease_volume()
+
+        elif 'mute system' in query:
+            mute_system()
+
+        elif 'unmute system' in query:
+            unmute_system()
+        
+        elif 'open control panel' in query:
+            open_control_panel()
+
+        elif 'open system settings' in query:
+            open_system_settings()
+
+        elif 'open network connections' in query:
+            open_network_connections()
+
+        elif 'open device manager' in query:
+            open_device_manager()
+
+        elif 'clear system cache' in query:
+            clear_system_cache()
+
+        elif 'enable Wi-Fi' in query:
+            toggle_wifi('enable')
+
+        elif 'disable wifi' in query:
+            toggle_wifi('disable')
+
+        elif 'open file explorer' in query:
+            open_file_explorer()
+
+        elif 'open youtube' in query:
             webbrowser.open("https://youtube.com")
             speak("Opening youtube")
         
@@ -123,6 +228,13 @@ if __name__ == "__main__":
         elif 'display time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"Sir, the time is {strTime}")
+        
+        elif 'check battery' in query:
+            check_battery_status()
+
+        elif 'open microsoft edge' in query:
+            webbrowser.open("https://www.microsoft.com")
+            speak("Opening microsoft edge")
         
         elif 'display date' in query:
             strDate = datetime.datetime.now().strftime("%Y-%m-%d")
@@ -157,6 +269,7 @@ if __name__ == "__main__":
         
         elif 'open instagram' in query:
             webbrowser.open("https://instagram.com")
+            speak("Opening Instagram")
         
         elif 'tell me a best line' in query:
             quote = random.choice(quotes)  # Select a random quote
@@ -167,6 +280,10 @@ if __name__ == "__main__":
             search_query = takeCommand().lower()
             webbrowser.open(f"https://www.google.com/search?q={search_query}")
 
+        elif 'open email' in query:
+            webbrowser.open("https://mail.google.com")
+            speak("Opening Google Email")
+        
         elif 'open wikipedia' in query:
             webbrowser.open("https://www.wikipedia.org")
             speak("Opening wikipedia for you")
@@ -189,6 +306,7 @@ if __name__ == "__main__":
                 
         elif 'open money converter' in query:
             webbrowser.open("https://www.xe.com") 
+            speak("Opening a Currency Converter")
         
         elif 'open bbc' in query:
             webbrowser.open("https://www.bbc.com")
@@ -293,22 +411,18 @@ if __name__ == "__main__":
         elif 'shutdown system' in query:
             speak("Shutting down the system.")
             os.system("shutdown /s /t 1")
+            speak("Shutting Dowm system")
     
         elif 'restart system' in query:
             speak("Restarting the system.")
             os.system("shutdown /r /t 1")
+            speak("Restarting the system")
     
         elif 'lock system' in query:
             speak("Locking the system.")
             os.system("rundll32.exe user32.dll,LockWorkStation")
+            speak("Locking Your System right now Sir")
 
-        elif 'chat with ai' in query or 'open chatbot' in query:
-           speak("What would you like to ask the AI?")
-           user_prompt = takeCommand()
-           ai_response = chat_with_openai(user_prompt)
-           print(ai_response)
-           speak(ai_response)
-           
         elif 'stop' in query:
             speak("Goodbye, Sir!")
             break
