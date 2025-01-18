@@ -97,23 +97,6 @@ def chat_with_openai(prompt):
     except Exception as e:
         return "Sorry, I couldn't connect to the chatbot service."
 
-# List of random websites
-websites = [
-    "https://www.wikipedia.org",
-    "https://www.reddit.com",
-    "https://www.quora.com",
-    "https://www.medium.com",
-    "https://www.stackoverflow.com"
-]
-
-# List of news websites
-news_websites = [
-    "https://www.bbc.com",
-    "https://www.cnn.com",
-    "https://www.nytimes.com",
-    "https://www.aljazeera.com",
-    "https://www.theguardian.com"
-]
 
 if __name__ == "__main__":
     wishMe()
@@ -122,9 +105,11 @@ if __name__ == "__main__":
 
         if 'open youtube' in query:
             webbrowser.open("https://youtube.com")
+            speak("Opening youtube")
         
         elif 'open chrome' in query:
             webbrowser.open("https://google.com")  # Opens Chrome
+            speak("Opening Google Chrome")
         
         elif 'play music' in query:
             music_dir = 'D:\\Non critical\\Music\\songs'  # Change to your music directory
@@ -160,12 +145,18 @@ if __name__ == "__main__":
             else:
              speak("WhatsApp is not installed or the path is incorrect. Trying WhatsApp Web.")
              webbrowser.open("https://web.whatsapp.com")
+             speak("Opening Whatsapp web")
 
         elif 'open facebook' in query:
             webbrowser.open("https://www.facebook.com")
+            speak("Opening Facebook")
         
         elif 'open twitter' in query:
             webbrowser.open("https://www.twitter.com")
+            speak("Opening twitter")
+        
+        elif 'open instagram' in query:
+            webbrowser.open("https://instagram.com")
         
         elif 'tell me a best line' in query:
             quote = random.choice(quotes)  # Select a random quote
@@ -176,11 +167,10 @@ if __name__ == "__main__":
             search_query = takeCommand().lower()
             webbrowser.open(f"https://www.google.com/search?q={search_query}")
 
-        elif 'open a random website' in query:
-            website = random.choice(websites)  # Select a random website
-            webbrowser.open(website)
-            speak(f"Opening {website}")
-        
+        elif 'open wikipedia' in query:
+            webbrowser.open("https://www.wikipedia.org")
+            speak("Opening wikipedia for you")
+
         elif 'set an alarm' in query:
             speak("Please tell me the time for the alarm (in HH:MM format).")
             alarm_time = takeCommand().lower()
@@ -196,14 +186,29 @@ if __name__ == "__main__":
             city = takeCommand().lower()  # Capture city input from user
             city = city.capitalize()  # Capitalize the first letter for consistency
             get_weather(city)  # Call the get_weather function with the city name
-        
-        elif 'open news website' in query:
-            news_site = random.choice(news_websites)  # Choose a random news website
-            webbrowser.open(news_site)
-            speak(f"Opening {news_site}")
-        
+                
         elif 'open money converter' in query:
             webbrowser.open("https://www.xe.com") 
+        
+        elif 'open bbc' in query:
+            webbrowser.open("https://www.bbc.com")
+            speak("Opening BBC News Website")
+
+        elif 'open cnn' in query:
+            webbrowser.open("https://edition.cnn.com") 
+            speak("Opening CNN news website")
+
+        elif 'open Al Jazeera' in query:
+            webbrowser.open("https://www.alijazeera.com")
+            speak("Opening Al Jazeera News Website")
+
+        elif 'open hindustan times' in query:
+            webbrowser.open("https://hindustantimes.com")
+            speak("Opening Hindustan Times News Website")
+        
+        elif 'open Dawn' in query:
+            webbrowser.open("https://www.dawn.com")
+            speak("Opening Dawn News Website")           
         
         elif 'open google maps' in query:
             webbrowser.open("https://www.google.com/maps")
@@ -307,5 +312,4 @@ if __name__ == "__main__":
         elif 'stop' in query:
             speak("Goodbye, Sir!")
             break
-
 
